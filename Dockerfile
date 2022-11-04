@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY . . 
 
-RUN npm install -g @nestjs/cli --production
-RUN npm install --production
+RUN npm install
 RUN npm run build 
 RUN npm prune --production 
 
