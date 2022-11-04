@@ -6,7 +6,7 @@ import * as fs from 'fs';
 import { join, resolve } from 'path';
 
 const isProduction = process.env.PRODUCTION === 'true';
-const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost:3000';
+const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost';
 
 @Controller()
 export class AppController {
@@ -20,7 +20,7 @@ export class AppController {
      <html>
       <head>
         <link
-          href="http://localhost:3000/css?family=Roboto:500,700,400italic"
+          href="http://localhost/css?family=Roboto:500,700,400italic"
           rel="stylesheet"
         />
 
@@ -66,7 +66,7 @@ export class AppController {
       .send(css);
   }
 
-  @Get('*')
+  @Get('/s*')
   async getHello(
     @Req() request: Request,
     @Res() response: Response,
