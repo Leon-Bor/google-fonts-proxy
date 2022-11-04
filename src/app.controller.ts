@@ -14,7 +14,9 @@ export class AppController {
 
   @Get('/index.html')
   async getHtml(@Res() response: Response): Promise<any> {
-    return response.send(`
+    return response.set({
+      'content-type': `text/html`,
+    }).send(`
      <html>
       <head>
         <link
