@@ -23,7 +23,7 @@ export class AppController {
         />
 
         <link
-          href="https://fonts.blh.app/css2?family=Poor+Story&display=swap"
+          href="https://${backenUrl}/css2?family=Poor+Story&display=swap"
           rel="stylesheet"
         />
       </head>
