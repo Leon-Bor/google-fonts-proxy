@@ -18,3 +18,5 @@ RUN npm run build
 
 # Start the server using the production build
 CMD ["PRODUCTION=true", "node", "dist/main.js" ]
+
+EXPOSE 80
