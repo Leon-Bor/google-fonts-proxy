@@ -1,6 +1,11 @@
 # compiled output
 /dist
 /node_modules
+/fonts/*.ttf
+/fonts/*.woff
+/fonts/*.woff2 
+/fonts/*.otf 
+/fonts/*.svg 
 
 # Logs
 logs
