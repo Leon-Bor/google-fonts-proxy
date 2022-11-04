@@ -14,7 +14,10 @@ export class AppController {
 
   @Get('/index.html')
   async getHtml(@Res() response: Response): Promise<any> {
-    const file = fs.readFileSync(resolve('index.html')).toString();
+    const file = fs
+      .readFileSync(resolve(join(process.cwd(), 'index.html')))
+      .toString();
+
     response.status(200);
     return response.send(file);
   }
