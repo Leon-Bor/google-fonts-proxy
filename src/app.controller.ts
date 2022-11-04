@@ -12,7 +12,7 @@ const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost';
 export class AppController {
   constructor(private readonly httpService: HttpService) {}
 
-  @Get('/index.html')
+  @Get()
   async getHtml(@Res() response: Response): Promise<any> {
     return response.set({
       'content-type': `text/html`,
