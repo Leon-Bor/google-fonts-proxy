@@ -14,12 +14,24 @@ export class AppController {
 
   @Get('/index.html')
   async getHtml(@Res() response: Response): Promise<any> {
-    const file = fs
-      .readFileSync(resolve(join(process.cwd(), 'index.html')))
-      .toString();
+    return response.send(`
+     <html>
+      <head>
+        <link
+          href="http://localhost:3000/css?family=Roboto:500,700,400italic"
+          rel="stylesheet"
+        />
 
-    response.status(200);
-    return response.send(file);
+        <link
+          href="https://fonts.blh.app/css2?family=Poor+Story&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <h1 style="font-family: 'Roboto'">HTML</h1>
+        <h1 style="font-family: 'Poor Story'">HTML</h1>
+      </body>
+    </html>`);
   }
 
   @Get('/css*')
