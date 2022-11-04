@@ -9,6 +9,6 @@ async function bootstrap() {
     credentials: true,
     methods: ['GET'],
   });
-  await app.listen(3000);
+  await app.listen(80);
 }
 bootstrap();
