@@ -1,4 +1,4 @@
-## Google fonts proxy
+# Google fonts proxy
 
 Since some asshole are sending out final written warnings with a fee you have to pay when you include any of the google fonts, I wrote this little NodeJs server to proxy the fonts through a url. Feel free to copy and edit the code.
 
