@@ -15,4 +15,4 @@ WORKDIR /app
 COPY --from=Builder /app ./  
 
 EXPOSE 3000
-CMD ["PRODUCTION=true","node", "dist/main" ]
+CMD [ "node", "dist/main" ]

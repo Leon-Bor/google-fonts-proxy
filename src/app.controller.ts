@@ -5,7 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import * as fs from 'fs';
 import { join } from 'path';
 
-const isProduction = process.env.PRODUCTION === 'true';
+const isProduction = true;
 const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost';
 
 @Controller()
