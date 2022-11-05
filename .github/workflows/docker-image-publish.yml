@@ -46,6 +46,8 @@ jobs:
         with:
           context: .
           push: true
+          flavor: |
+            latest=auto
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
           labels: ${{ steps.meta.outputs.labels }}
