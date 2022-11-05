@@ -31,8 +31,8 @@ export class AppController {
         />
       </head>
       <body>
-        <h1 style="font-family: 'Exo'">HTML</h1>
-        <h1 style="font-family: 'Poor Story'">HTML</h1>
+        <h1 style="font-family: 'Exo'">local</h1>
+        <h1 style="font-family: 'Poor Story'">remote</h1>
       </body>
     </html>`);
   }
