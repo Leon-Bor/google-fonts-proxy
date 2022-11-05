@@ -48,5 +48,5 @@ jobs:
           push: true
           flavor: |
             latest=auto
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}:latest
           labels: ${{ steps.meta.outputs.labels }}
