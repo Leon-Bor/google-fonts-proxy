@@ -33,6 +33,7 @@ export class AppController {
       <body>
         <h1 style="font-family: 'Exo'">LOCAL</h1>
         <h1 style="font-family: 'Poor Story'">REMOTE</h1>
+        <h1>NONE</h1>
       </body>
     </html>`);
   }
