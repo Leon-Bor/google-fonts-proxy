@@ -1,12 +1,14 @@
 import { HttpService } from '@nestjs/axios';
 import { Controller, Get, Req, Res, StreamableFile } from '@nestjs/common';
-import { Request, Response } from 'express';
-import { firstValueFrom } from 'rxjs';
+import { query, Request, Response } from 'express';
+import { catchError, firstValueFrom, map, throwError } from 'rxjs';
 import * as fs from 'fs';
 import { join } from 'path';
+import { encode } from 'punycode';
+import { Console } from 'console';
 
 const isProduction = true;
-const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost';
+const backenUrl = isProduction ? 'fonts.blh.app' : 'localhost:3000';
 
 @Controller()
 export class AppController {
@@ -20,17 +22,16 @@ export class AppController {
      <html>
       <head>
         <link
-          href="http://localhost/css?family=Roboto:500,700,400italic"
+          href="http://localhost:3000/css2?family=Exo&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
           rel="stylesheet"
         />
-
         <link
           href="https://fonts.blh.app/css2?family=Poor+Story&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
-        <h1 style="font-family: 'Roboto'">HTML</h1>
+        <h1 style="font-family: 'Exo'">HTML</h1>
         <h1 style="font-family: 'Poor Story'">HTML</h1>
       </body>
     </html>`);
@@ -41,9 +42,8 @@ export class AppController {
     @Req() request: Request,
     @Res() response: Response,
   ): Promise<any> {
-    const fontUrl = `https://fonts.googleapis.com${
-      request.path
-    }?${new URLSearchParams(request.query as {}).toString()}`;
+    const fontUrl = `https://fonts.googleapis.com${request.originalUrl}`;
+
     const { data } = await firstValueFrom(
       this.httpService.get(fontUrl, {
         headers: {
@@ -51,6 +51,7 @@ export class AppController {
         },
       }),
     );
+
     let css = (data as string).replace(/fonts.gstatic.com/g, backenUrl);
 
     if (!isProduction) {
@@ -71,9 +72,7 @@ export class AppController {
     @Req() request: Request,
     @Res() response: Response,
   ): Promise<any> {
-    const fontUrl = `https://fonts.gstatic.com${
-      request.path
-    }?${new URLSearchParams(request.query as {}).toString()}`;
+    const fontUrl = `https://fonts.gstatic.com${request.originalUrl}`;
 
     const fontResponse = await firstValueFrom(
       this.httpService.get(fontUrl, {
