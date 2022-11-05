@@ -38,7 +38,7 @@ export class AppController {
     </html>`);
   }
 
-  @Get('/css*')
+  @Get(['/css*', '/icon*'])
   async getCss(
     @Req() request: Request,
     @Res() response: Response,
